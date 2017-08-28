@@ -1,7 +1,6 @@
 cmake_minimum_required (VERSION 2.8)
 
-
-project (sb)
+project (splitter)
 
 #add_subdirectory(tests)
 
@@ -40,27 +39,19 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 
 include_directories(
-    ../sphinxbase/include
-    ../sphinxbase/include/win32
-    ../pocketsphinx/include
+    .
     )
 
 add_definitions(-D__STDC_CONSTANT_MACROS)
 
-set(SPHINX_LIB
-    sphinxbase
-    pocketsphinx
+set (SOURCES
+    splitter.cpp
     )
 
-set (SOURCES_PLOT
-    test.cpp
+add_executable(splitter
+    ${SOURCES}
     )
-
-add_executable(sb
-    ${SOURCES_PLOT}
-    )
-target_link_libraries(sb
-    ${SPHINX_LIB}
+target_link_libraries(splitter
     ${OTHER_LIBS}
     )
 
